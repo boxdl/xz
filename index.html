@@ -2,125 +2,206 @@
 <html>
 <head>
   <title>软件下载</title>
+  <meta charset="utf-8">
   <style>
-    /* 样式表 */
-    .wrapper {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
     }
+
+    .search-box {
+      margin-bottom: 20px;
+    }
+    
+    .search-box input[type="text"] {
+      width: 100%;
+      height: 40px;
+      font-size: 16px;
+      padding: 10px;
+      border-radius: 4px;
+      border: 1px solid #ddd;
+    }
+    
     .menu {
       display: flex;
-      margin: 20px 0;
+      justify-content: space-between;
+      align-items: center;
+      list-style: none;
+      padding: 0;
+      margin-bottom: 20px;
     }
+    
     .menu a {
-      margin-right: 20px;
-      font-size: 18px;
-    }
-    .menu a:hover {
-      text-decoration: underline;
-    }
-    .category-count {
-      color: #999;
-      font-size: 14px;
-    }
-    .software-list {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-    .software-item {
-      width: 300px;
-      margin: 20px;
-      padding: 20px;
-      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-      border-radius: 5px;
-      text-align: center;
-    }
-    .software-item h3 {
-      margin-top: 0;
-      font-size: 24px;
-    }
-    .software-item img {
-      width: 150px;
-      border-radius: 5px;
-    }
-    .software-item p {
-      margin: 10px 0;
+      text-decoration: none;
+      color: #333;
       font-size: 16px;
+      padding: 10px 20px;
+      border-radius: 4px;
+      transition: all 0.2s ease;
+    }
+    
+    .menu a:hover,
+    .menu a.active {
+      background-color: #333;
+      color: #fff;
+    }
+    
+    .category-count {
+      margin-left: 5px;
+      font-size: 14px;
+      color: #999;
+    }
+    
+    .software-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    
+    .software-item {
+      display: flex;
+      margin-bottom: 20px;
+      border-radius: 4px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+    }
+    
+    .software-info {
+      padding: 20px;
+      background-color: #fff;
+    }
+    
+    .software-name {
+      margin: 0 0 10px 0;
+      font-size: 20px;
+      color: #333;
+    }
+    
+    .software-description {
+      margin: 0;
+      font-size: 14px;
       color: #666;
     }
-    .download-btn {
-      display: inline-block;
-      margin-top: 10px;
-      padding: 10px 30px;
-      background-color: #2f9ae0;
-      color: #fff;
-      border-radius: 5px;
-      text-decoration: none;
-      transition: all 0.3s;
+    
+    .software-category {
+      margin: 10px 0;
+      font-size: 14px;
+      color: #999;
     }
-    .download-btn:hover {
-      background-color: #1c7bbf;
+    
+    .software-download {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      background-color: #f3f3f3;
+    }
+    
+    .software-download a {
+      text-decoration: none;
+      color: #fff;
+      font-size: 16px;
+      padding: 10px 20px;
+      background-color: #333;
+      border-radius: 4px;
+      transition: all 0.2s ease;
+    }
+    
+    .software-download a:hover {
+      background-color: #222;
     }
   </style>
 </head>
 <body>
-  <div class="wrapper">
-    <h1>软件下载</h1>
-    <div class="menu">
-      <a href="#" class="category" data-category="全部">全部<span class="category-count"></span></a>
-      <a href="#" class="category" data-category="浏览器">浏览器<span class="category-count"></span></a>
-      <a href="#" class="category" data-category="聊天工具">聊天工具<span class="category-count"></span></a>
-      <a href="#" class="category" data-category="工具软件">工具软件<span class="category-count"></span></a>
+  <div class="container">
+    <div class="search-box">
+      <input type="text" placeholder="搜索软件...">
     </div>
-    <div class="software-list">
-      <div class="software-item" data-category="浏览器">
-        <img src="https://via.placeholder.com/150" alt="">
-        <h3>Chrome浏览器</h3>
-        <p>Google推出的一款浏览器</p>
-        <a href="#" class="download-btn">立即下载</a>
-      </div>
-      <div class="software-item" data-category="聊天工具">
-        <img src="https://via.placeholder.com/150" alt="">
-        <h3>QQ</h3>
-        <p>腾讯公司推出的一款聊天工具</p>
-        <a href="#" class="download-btn">立即下载</a>
-      </div>
-      <div class="software-item" data-category="工具软件">
-        <img src="https://via.placeholder.com/150" alt="">
-        <h3>WinRAR</h3>
-        <p>一款强大的压缩工具</p>
-        <a href="#" class="download-btn">立即下载</a>
-      </div>
-      <div class="software-item" data-category="浏览器">
-        <img src="https://via.placeholder.com/150" alt="">
-        <h3>Firefox浏览器</h3>
-        <p>Mozilla推出的一款浏览器</p>
-        <a href="#" class="download-btn">立即下载</a>
-      </div>
-      <div class="software-item" data-category="聊天工具">
-        <img src="https://via.placeholder.com/150" alt="">
-        <h3>WeChat</h3>
-        <p>腾讯公司推出的一款聊天工具</p>
-        <a href="#" class="download-btn">立即下载</a>
-      </div>
-      <div class="software-item" data-category="工具软件">
-        <img src="https://via.placeholder.com/150" alt="">
-        <h3>Photoshop</h3>
-        <p>Adobe公司推出的一款图像处理软件</p>
-        <a href="#" class="download-btn">立即下载</a>
-      </div>
-    </div>
+    <ul class="menu">
+      <li><a href="#" class="active">全部<span class="category-count"></span></a></li>
+      <li><a href="#">杀毒软件<span class="category-count"></span></a></li>
+      <li><a href="#">影音软件<span class="category-count"></span></a></li>
+      <li><a href="#">工具软件<span class="category-count"></span></a></li>
+    </ul>
+    <ul class="software-list">
+      <li class="software-item" data-category="杀毒软件">
+        <div class="software-info">
+          <h3 class="software-name">360杀毒</h3>
+          <p class="software-description">国内知名杀毒软件，拥有强大的查杀和清除功能。</p>
+          <p class="software-category">杀毒软件</p>
+        </div>
+        <div class="software-download">
+          <a href="#">下载</a>
+        </div>
+      </li>
+      <li class="software-item" data-category="影音软件">
+        <div class="software-info">
+          <h3 class="software-name">PotPlayer</h3>
+          <p class="software-description">韩国知名的媒体播放器，支持多种格式的视频和音频文件。</p>
+          <p class="software-category">影音软件</p>
+        </div>
+        <div class="software-download">
+          <a href="#">下载</a>
+        </div>
+      </li>
+      <li class="software-item" data-category="工具软件">
+        <div class="software-info">
+          <h3 class="software-name">Everything</h3>
+          <p class="software-description">本地文件搜索工具，提供快速和准确的搜索功能。</p>
+          <p class="software-category">工具软件</p>
+        </div>
+        <div class="software-download">
+          <a href="#">下载</a>
+        </div>
+      </li>
+      <li class="software-item" data-category="杀毒软件">
+        <div class="software-info">
+          <h3 class="software-name">百度杀毒</h3>
+          <p class="software-description">百度出品的杀毒软件，提供云查杀和本地查杀两种方式。</p>
+          <p class="software-category">杀毒软件</p>
+        </div>
+        <div class="software-download">
+          <a href="#">下载</a>
+        </div>
+      </li>
+      <li class="software-item" data-category="工具软件">
+        <div class="software-info">
+          <h3 class="software-name">Ditto</h3>
+          <p class="software-description">剪贴板管理工具，可以复制和粘贴多个内容，并支持搜索和过滤。</p>
+          <p class="software-category">工具软件</p>
+        </div>
+        <div class="software-download">
+          <a href="#">下载</a>
+        </div>
+      </li>
+      <li class="software-item" data-category="影音软件">
+        <div class="software-info">
+          <h3 class="software-name">VLC</h3>
+          <p class="software-description">跨平台的媒体播放器，支持多种格式的视频和音频文件。</p>
+          <p class="software-category">影音软件</p>
+        </div>
+        <div class="software-download">
+          <a href="#">下载</a>
+        </div>
+      </li>
+    </ul>
   </div>
+  
   <script>
-    window.onload = () => {
-      const menu = document.querySelectorAll('.category');
-      const softwareItem = document.querySelectorAll('.software-item');
-      
-      menu.forEach((menuItem) => {
+    const menu = document.querySelectorAll('.menu a');
+    const softwareItem = document.querySelectorAll('.software-item');
+    const searchBox = document.querySelector('.search-box input[type="text"]');
+    
+    // 切换菜单
+    menu.forEach((menuItem) => {
+      menuItem.addEventListener('click', () => {
+        menu.forEach((item) => {
+          item.classList.remove('active')
+        })
+        menuItem.classList.add('active');
+        
+        const filterCategory = menuItem.innerHTML;
         let count = 0;
-        const filterCategory = menuItem.getAttribute('data-category');
         softwareItem.forEach((item) => {
           if (filterCategory === '全部') {
             item.style.display = 'block';
@@ -134,7 +215,29 @@
         });
         menuItem.querySelector('.category-count').innerHTML = `(${count})`;
       });
-    }
+    });
+    
+    // 计算初始数量
+    let count = 0;
+    softwareItem.forEach((item) => {
+      item.style.display = 'block';
+      count++;
+    });
+    menu[0].querySelector('.category-count').innerHTML = `(${count})`;
+    
+    // 搜索
+    searchBox.addEventListener('input', () => {
+      const keyword = searchBox.value.toLowerCase().trim();
+      softwareItem.forEach((item) => {
+        const name = item.querySelector('.software-name').innerHTML.toLowerCase();
+        const description = item.querySelector('.software-description').innerHTML.toLowerCase();
+        if (name.includes(keyword) || description.includes(keyword)) {
+          item.style.display = 'block';
+        } else {
+          item.style.display = 'none';
+        }
+      });
+    });
   </script>
 </body>
 </html>
