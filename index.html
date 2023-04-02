@@ -1,90 +1,162 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <title>软件下载</title>
-</head>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background-color: #000;
+      color: #fff;
+    }
+
+    h1 {
+      margin-bottom: 30px;
+      font-size: 36px;
+      font-weight: bold;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .software-item {
+      margin: 20px;
+      padding: 30px;
+      width: 250px;
+      height: 400px;
+      text-align: center;
+      background-color: #fff;
+      border-radius: 5px;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+      transition: all 0.3s ease-in-out;
+    }
+
+    .software-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+    }
+
+    .software-icon {
+      margin-bottom: 30px;
+    }
+
+    .software-icon img {
+      width: 100px;
+    }
+
+    .software-name {
+      margin-bottom: 10px;
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .software-description {
+      font-size: 18px;
+      line-height: 1.5;
+      margin-bottom: 30px;
+    }
+
+    .download-btn {
+      display: inline-block;
+      padding: 10px 20px;
+      border-radius: 5px;
+      background-color: #000;
+      color: #fff;
+      text-decoration: none;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .download-btn:hover {
+      background-color: #fff;
+      color: #000;
+    }
+
+    .menu {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 30px;
+    }
+
+    .menu a {
+      display: inline-block;
+      margin: 0 20px;
+      padding: 5px;
+      border-radius: 5px;
+      background-color: #fff;
+      color: #000;
+      text-decoration: none;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .menu a:hover {
+      background-color: #000;
+      color: #fff;
+    }
+  </style>
+</head>
 <body>
   <h1>软件下载</h1>
-  
-  <div class="software-downloads">
+  <div class="menu">
+    <a href="#" class="active">全部</a>
+    <a href="#">分类1</a>
+    <a href="#">分类2</a>
+    <a href="#">分类3</a>
+  </div>
+  <div class="container">
     <div class="software-item">
       <div class="software-icon">
         <img src="http://example.com/software1.png" alt="">
       </div>
-      <div class="software-info">
-        <h2>软件1</h2>
-        <p>这是软件1的描述</p>
-        <a href="http://example.com/software1.exe" class="download-btn">下载</a>
-      </div>
+      <div class="software-name">软件1</div>
+      <div class="software-description">这是软件1的描述</div>
+      <a href="http://example.com/software1.exe" class="download-btn">下载</a>
     </div>
-    
     <div class="software-item">
       <div class="software-icon">
         <img src="http://example.com/software2.png" alt="">
       </div>
-      <div class="software-info">
-        <h2>软件2</h2>
-        <p>这是软件2的描述</p>
-        <a href="http://example.com/software2.exe" class="download-btn">下载</a>
-      </div>
+      <div class="software-name">软件2</div>
+      <div class="software-description">这是软件2的描述</div>
+      <a href="http://example.com/software2.exe" class="download-btn">下载</a>
     </div>
-    
     <!-- 添加更多软件 -->
   </div>
-  
-  <style>
-    .software-downloads {
-      max-width: 1200px;
-      margin: 0 auto;
-    }
+  <script>
+    const menu = document.querySelectorAll('.menu a');
+    const softwareItem = document.querySelectorAll('.software-item');
     
-    .software-item {
-      display: inline-block;
-      width: 25%;
-      padding: 10px;
-      box-sizing: border-box;
-      text-align: center;
-    }
-    
-    .software-item:hover {
-      background-color: #f5f5f5;
-    }
-    
-    .software-icon {
-      margin-bottom: 10px;
-    }
-    
-    .software-icon img {
-      width: 80px;
-    }
-    
-    .software-info h2 {
-      font-size: 16px;
-      font-weight: bold;
-      margin: 0 0 5px 0;
-    }
-    
-    .software-info p {
-      font-size: 14px;
-      line-height: 1.5;
-      margin: 0 0 10px 0;
-    }
-    
-    .download-btn {
-      display: inline-block;
-      padding: 6px 20px;
-      border-radius: 4px;
-      background-color: #409EFF;
-      color: #fff;
-      text-decoration: none;
-      transition: all 0.3s;
-    }
-    
-    .download-btn:hover {
-      background-color: #66B1FF;
-    }
-  </style>
+    // 切换菜单
+    menu.forEach((menuItem) => {
+      menuItem.addEventListener('click', () => {
+        menu.forEach((item) => {
+          item.classList.remove('active')
+        })
+        menuItem.classList.add('active');
+        
+        const filterCategory = menuItem.innerHTML;
+        softwareItem.forEach((item) => {
+          if (filterCategory === '全部') {
+            item.style.display = 'block';
+          } else if (item.dataset.category === filterCategory) {
+            item.style.display = 'block';
+          } else {
+            item.style.display = 'none';
+          }
+        });
+      });
+    });
+  </script>
 </body>
 </html>
