@@ -13,11 +13,12 @@
     body {
       font-family: Arial, sans-serif;
       text-align: center;
-      background-color: #000;
-      color: #fff;
+      background-color: #fff;
+      color: #000;
     }
 
     h1 {
+      margin-top: 30px;
       margin-bottom: 30px;
       font-size: 36px;
       font-weight: bold;
@@ -37,7 +38,8 @@
       width: 250px;
       height: 400px;
       text-align: center;
-      background-color: #fff;
+      background-color: #000;
+      color: #fff;
       border-radius: 5px;
       box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
       transition: all 0.3s ease-in-out;
@@ -72,15 +74,15 @@
       display: inline-block;
       padding: 10px 20px;
       border-radius: 5px;
-      background-color: #000;
-      color: #fff;
+      background-color: #fff;
+      color: #000;
       text-decoration: none;
       transition: all 0.3s ease-in-out;
     }
 
     .download-btn:hover {
-      background-color: #fff;
-      color: #000;
+      background-color: #000;
+      color: #fff;
     }
 
     .menu {
@@ -94,15 +96,45 @@
       margin: 0 20px;
       padding: 5px;
       border-radius: 5px;
-      background-color: #fff;
-      color: #000;
+      background-color: #000;
+      color: #fff;
       text-decoration: none;
       transition: all 0.3s ease-in-out;
     }
 
-    .menu a:hover {
-      background-color: #000;
-      color: #fff;
+    .menu a.active {
+      background-color: #fff;
+      color: #000;
+    }
+
+    .search-box {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 30px;
+    }
+
+    .search-box input[type="text"] {
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      font-size: 18px;
+      width: 300px;
+    }
+
+    @media screen and (max-width: 768px) {
+
+      .container {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .search-box {
+        width: 100%;
+      }
+
+      .search-box input[type="text"] {
+        width: 100%;
+      }
     }
   </style>
 </head>
@@ -114,8 +146,11 @@
     <a href="#">分类2</a>
     <a href="#">分类3</a>
   </div>
+  <div class="search-box">
+    <input type="text" placeholder="搜索...">
+  </div>
   <div class="container">
-    <div class="software-item">
+    <div class="software-item" data-category="分类1">
       <div class="software-icon">
         <img src="http://example.com/software1.png" alt="">
       </div>
@@ -123,7 +158,7 @@
       <div class="software-description">这是软件1的描述</div>
       <a href="http://example.com/software1.exe" class="download-btn">下载</a>
     </div>
-    <div class="software-item">
+    <div class="software-item" data-category="分类2">
       <div class="software-icon">
         <img src="http://example.com/software2.png" alt="">
       </div>
@@ -131,11 +166,20 @@
       <div class="software-description">这是软件2的描述</div>
       <a href="http://example.com/software2.exe" class="download-btn">下载</a>
     </div>
+    <div class="software-item" data-category="分类3">
+      <div class="software-icon">
+        <img src="http://example.com/software3.png" alt="">
+      </div>
+      <div class="software-name">软件3</div>
+      <div class="software-description">这是软件3的描述</div>
+      <a href="http://example.com/software3.exe" class="download-btn">下载</a>
+    </div>
     <!-- 添加更多软件 -->
   </div>
   <script>
     const menu = document.querySelectorAll('.menu a');
     const softwareItem = document.querySelectorAll('.software-item');
+    const searchBox = document.querySelector('.search-box input[type="text"]');
     
     // 切换菜单
     menu.forEach((menuItem) => {
@@ -155,6 +199,20 @@
             item.style.display = 'none';
           }
         });
+      });
+    });
+
+    // 搜索
+    searchBox.addEventListener('input', () => {
+      const keyword = searchBox.value.toLowerCase().trim();
+      softwareItem.forEach((item) => {
+        const name = item.querySelector('.software-name').innerHTML.toLowerCase();
+        const description = item.querySelector('.software-description').innerHTML.toLowerCase();
+        if (name.includes(keyword) || description.includes(keyword)) {
+          item.style.display = 'block';
+        } else {
+          item.style.display = 'none';
+        }
       });
     });
   </script>
