@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>软件下载</title>
@@ -33,7 +34,7 @@
     }
 
     .software-item {
-      margin 
+      margin: 30px;
       padding: 30px;
       width: 250px;
       height: 400px;
@@ -146,8 +147,10 @@
         width: 100%;
       }
     }
+
   </style>
 </head>
+
 <body>
   <h1>软件下载</h1>
   <div class="menu">
@@ -184,7 +187,8 @@
       <div class="software-description">这是软件3的描述</div>
       <a href="http://example.com/software1.exe" class="download-btn" style="background: linear-gradient(to right, #6dd5ed, #2193b0);">下载</a>
     </div>
-          <div class="software-icon">
+    <div class="software-item" data-category="分类3">
+      <div class="software-icon">
         <img src="http://example.com/software3.png" alt="">
       </div>
       <div class="software-name">软件4</div>
@@ -192,7 +196,7 @@
       <a href="http://example.com/software1.exe" class="download-btn" style="background: linear-gradient(to right, #6dd5ed, #2193b0);">下载</a>
     </div>
   </div>
-    <!-- 添加更多软件 -->
+  <!-- 添加更多软件 -->
   </div>
   <div id="progress-bar"></div>
   <script>
@@ -200,7 +204,7 @@
     const softwareItem = document.querySelectorAll('.software-item');
     const searchBox = document.querySelector('.search-box input[type="text"]');
     const progressBar = document.getElementById('progress-bar');
-    
+
     progressBar.style.display = 'none';
 
     // 切换菜单
@@ -210,7 +214,7 @@
           item.classList.remove('active')
         })
         menuItem.classList.add('active');
-        
+
         const filterCategory = menuItem.innerHTML;
         softwareItem.forEach((item) => {
           if (filterCategory === '全部') {
@@ -262,4 +266,5 @@
     });
   </script>
 </body>
+
 </html>
