@@ -1,303 +1,140 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
-<title>软件下载</title>
-<style>
-* {
-margin: 0;
-padding: 0;
-box-sizing: border-box;
-}
-
-body {
-  font-family: Arial, sans-serif;
-  text-align: center;
-  background-color: #fff;
-  color: #000;
-}
-
-h1 {
-  margin-top: 30px;
-  margin-bottom: 30px;
-  font-size: 36px;
-  font-weight: bold;
-}
-
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-.software-item {
-  margin: 20px;
-  padding: 30px;
-  width: 250px;
-  height: 400px;
-  text-align: center;
-  background-color: #000;
-  color: #fff;
-  border-radius: 5px;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-  transition: all 0.3s ease-in-out;
-}
-
-.software-item:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
-}
-
-.software-icon {
-  margin-bottom: 30px;
-}
-
-.software-icon img {
-  width: 100px;
-}
-
-.software-name {
-  margin-bottom: 10px;
-  font-size: 24px;
-  font-weight: bold;
-}
-
-.software-description {
-  font-size: 18px;
-  line-height: 1.5;
-  margin-bottom: 30px;
-}
-
-.download-btn {
-  display: inline-block;
-  padding: 10px 20px;
-  border-radius: 5px;
-  background-color: #fff;
-  color: #000;
-  text-decoration: none;
-  transition: all 0.3s ease-in-out;
-}
-
-.download-btn:hover {
-  background-color: #000;
-  color: #fff;
-}
-
-.progress-bar {
-  margin-top: 10px;
-  height: 20px;
-  border-radius: 10px;
-  overflow: hidden;
-  background-color: #ddd;
-}
-
-.progress {
-  height: 100%;
-  width: 0%;
-  background-color: #00c853;
-  transition: all 0.2s ease-in-out;
-}
-
-.menu {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 30px;
-}
-
-.menu a {
-  display: inline-block;
-  margin: 0 20px;
-  padding: 5px;
-  border-radius: 5px;
-  background-color: #000;
-  color: #fff;
-  text-decoration: none;
-  transition: all 0.3s ease-in-out;
-}
-
-.menu a.active {
-  background-color: #fff;
-  color: #000;
-}
-
-.category-count {
-  margin-left: 5px;
-  font-size: 14px;
-  font-weight: bold;
-  color: #888;
-}
-
-.search-box {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 30px;
-}
-
-.search-box input[type="text"] {
-  padding: 10px;
-  border: none;
-  border-radius: 5px;
-  font-size: 18px;
-  width: 300px;
-}
-
-@media screen and (max-width: 768px) {
-
-  .container {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .search-box {
-    width: 100%;
-  }
-
-  .search-box input[type="text"] {
-    width: 100%;
-  }
-}
-</style>
+  <title>软件下载</title>
+  <style>
+    /* 样式表 */
+    .wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .menu {
+      display: flex;
+      margin: 20px 0;
+    }
+    .menu a {
+      margin-right: 20px;
+      font-size: 18px;
+    }
+    .menu a:hover {
+      text-decoration: underline;
+    }
+    .category-count {
+      color: #999;
+      font-size: 14px;
+    }
+    .software-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .software-item {
+      width: 300px;
+      margin: 20px;
+      padding: 20px;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+      border-radius: 5px;
+      text-align: center;
+    }
+    .software-item h3 {
+      margin-top: 0;
+      font-size: 24px;
+    }
+    .software-item img {
+      width: 150px;
+      border-radius: 5px;
+    }
+    .software-item p {
+      margin: 10px 0;
+      font-size: 16px;
+      color: #666;
+    }
+    .download-btn {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 10px 30px;
+      background-color: #2f9ae0;
+      color: #fff;
+      border-radius: 5px;
+      text-decoration: none;
+      transition: all 0.3s;
+    }
+    .download-btn:hover {
+      background-color: #1c7bbf;
+    }
+  </style>
 </head>
 <body>
-<h1>软件下载</h1>
-<div class="menu">
-<a href="#" class="active">全部</a>
-<a href="#">分类1<span class="category-count"></span></a>
-<a href="#">分类2<span class="category-count"></span></a>
-<a href="#">分类3<span class="category-count"></span></a>
-</div>
-<div class="search-box">
-<input type="text" placeholder="搜索...">
-</div>
-<div class="container">
-<div class="software-item" data-category="分类1">
-<div class="software-icon">
-<img src="http://example.com/software1.png" alt="">
-</div>
-<div class="software-name">软件1</div>
-<div class="software-description">这是软件1的描述</div>
-<a href="#" class="download-btn" data-url="http://example.com/software1.exe">下载</a>
-<div class="progress-bar" style="display: none">
-<div class="progress"></div>
-</div>
-</div>
-<div class="software-item" data-category="分类2">
-<div class="software-icon">
-<img src="http://example.com/software2.png" alt="">
-</div>
-<div class="software-name">软件2</div>
-<div class="software-description">这是软件2的描述</div>
-<a href="#" class="download-btn" data-url="http://example.com/software2.exe">下载</a>
-<div class="progress-bar" style="display: none">
-<div class="progress"></div>
-</div>
-</div>
-<div class="software-item" data-category="分类3">
-<div class="software-icon">
-<img src="http://example.com/software3.png" alt="">
-</div>
-<div class="software-name">软件3</div>
-<div class="software-description">这是软件3的描述</div>
-<a href="#" class="download-btn" data-url="http://example.com/software3.exe">下载</a>
-<div class="progress-bar" style="display: none">
-<div class="progress"></div>
-</div>
-</div>
-<!-- 添加更多软件 -->
-</div>
-<script>
-const menu = document.querySelectorAll('.menu a');
-const softwareItem = document.querySelectorAll('.software-item');
-const searchBox = document.querySelector('.search-box input[type="text"]');
-
-// 切换菜单
-menu.forEach((menuItem) => {
-  menuItem.addEventListener('click', () => {
-    menu.forEach((item) => {
-      item.classList.remove('active')
-    })
-    menuItem.classList.add('active');
-    
-    const filterCategory = menuItem.innerHTML;
-    let count = 0;
-    softwareItem.forEach((item) => {
-      if (filterCategory === '全部') {
-        item.style.display = 'block';
-        count++;
-      } else if (item.dataset.category === filterCategory) {
-        item.style.display = 'block';
-        count++;
-      } else {
-        item.style.display = 'none';
-      }
-    });
-    menuItem.querySelector('.category-count').innerHTML = `(${count})`;
-  });
-});
-
-// 搜索
-searchBox.addEventListener('input', () => {
-  const keyword = searchBox.value.toLowerCase().trim();
-  softwareItem.forEach((item) => {
-    const name = item.querySelector('.software-name').innerHTML.toLowerCase();
-    const description = item.querySelector('.software-description').innerHTML.toLowerCase();
-    if (name.includes(keyword) || description.includes(keyword)) {
-      item.style.display = 'block';
-    } else {
-      item.style.display = 'none';
-    }
-  });
-});
-
-// 下载进度条
-const downloadBtns = document.querySelectorAll('.download-btn');
-
-downloadBtns.forEach((btn) => {
-  btn.addEventListener('click', () => {
-    const url = btn.getAttribute('data-url');
-    const progress = btn.nextElementSibling;
-    progress.style.display = 'block';
-    
-    fetch(url).then((res) => {
-      const totalSize = parseInt(res.headers.get('Content-Length'), 10);
-      let currentSize = 0;
+  <div class="wrapper">
+    <h1>软件下载</h1>
+    <div class="menu">
+      <a href="#" class="category" data-category="全部">全部<span class="category-count"></span></a>
+      <a href="#" class="category" data-category="浏览器">浏览器<span class="category-count"></span></a>
+      <a href="#" class="category" data-category="聊天工具">聊天工具<span class="category-count"></span></a>
+      <a href="#" class="category" data-category="工具软件">工具软件<span class="category-count"></span></a>
+    </div>
+    <div class="software-list">
+      <div class="software-item" data-category="浏览器">
+        <img src="https://via.placeholder.com/150" alt="">
+        <h3>Chrome浏览器</h3>
+        <p>Google推出的一款浏览器</p>
+        <a href="#" class="download-btn">立即下载</a>
+      </div>
+      <div class="software-item" data-category="聊天工具">
+        <img src="https://via.placeholder.com/150" alt="">
+        <h3>QQ</h3>
+        <p>腾讯公司推出的一款聊天工具</p>
+        <a href="#" class="download-btn">立即下载</a>
+      </div>
+      <div class="software-item" data-category="工具软件">
+        <img src="https://via.placeholder.com/150" alt="">
+        <h3>WinRAR</h3>
+        <p>一款强大的压缩工具</p>
+        <a href="#" class="download-btn">立即下载</a>
+      </div>
+      <div class="software-item" data-category="浏览器">
+        <img src="https://via.placeholder.com/150" alt="">
+        <h3>Firefox浏览器</h3>
+        <p>Mozilla推出的一款浏览器</p>
+        <a href="#" class="download-btn">立即下载</a>
+      </div>
+      <div class="software-item" data-category="聊天工具">
+        <img src="https://via.placeholder.com/150" alt="">
+        <h3>WeChat</h3>
+        <p>腾讯公司推出的一款聊天工具</p>
+        <a href="#" class="download-btn">立即下载</a>
+      </div>
+      <div class="software-item" data-category="工具软件">
+        <img src="https://via.placeholder.com/150" alt="">
+        <h3>Photoshop</h3>
+        <p>Adobe公司推出的一款图像处理软件</p>
+        <a href="#" class="download-btn">立即下载</a>
+      </div>
+    </div>
+  </div>
+  <script>
+    window.onload = () => {
+      const menu = document.querySelectorAll('.category');
+      const softwareItem = document.querySelectorAll('.software-item');
       
-      const reader = res.body.getReader();
-      return new ReadableStream({
-        start(controller) {
-          function pump() {
-            reader.read().then(({ value, done }) => {
-              if (done) {
-                controller.close();
-                return;
-              }
-              currentSize += value.length;
-              progress.querySelector('.progress').style.width = `${Math.floor(currentSize / totalSize * 100)}%`;
-              controller.enqueue(value);
-              pump();
-            }).catch((err) => {
-              console.error(err);
-              controller.error(err);
-            })
+      menu.forEach((menuItem) => {
+        let count = 0;
+        const filterCategory = menuItem.getAttribute('data-category');
+        softwareItem.forEach((item) => {
+          if (filterCategory === '全部') {
+            item.style.display = 'block';
+            count++;
+          } else if (item.dataset.category === filterCategory) {
+            item.style.display = 'block';
+            count++;
+          } else {
+            item.style.display = 'none';
           }
-          pump();
-        }
+        });
+        menuItem.querySelector('.category-count').innerHTML = `(${count})`;
       });
-    }).then((stream) => {
-      const downloadUrl = URL.createObjectURL(new Blob([stream]));
-      const a = document.createElement('a');
-      a.href = downloadUrl;
-      a.download = url.split('/').pop();
-      a.click();
-      URL.revokeObjectURL(downloadUrl);
-      progress.style.display = 'none';
-    }).catch((err) => {
-      console.error(err);
-    })
-  });
-});
-</script>
+    }
+  </script>
 </body>
 </html>
